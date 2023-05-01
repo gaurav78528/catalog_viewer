@@ -7,7 +7,6 @@ Tech stack used:
 
 * Html
 * CSS
-* JavaScript
 * React JS
 * Material UI
 * TypeScript
