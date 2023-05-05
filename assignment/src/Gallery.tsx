@@ -13,14 +13,23 @@ interface GalleryProps {
   data: Slide[];
 }
 
-const Gallery = ({ data }: GalleryProps) => {
+const Gallery = ({ setData }: GalleryProps) => {
   const [slide, setSlide] = useState<number>(0);
   const slideTimerRef = useRef<any>(null);
   const [slides, setSlides] = useState<Slide[]>(data);
   const [isTimerStarted, setIsTimerStarted] = useState<boolean>(false);
-
+  
+  async function fetchData(){
+ try{
+    const res = await  fetch(url);
+    const actualRes= await res.json();
+    setData(actualRes)
+  }catch(err){
+    console.log(err)
+  }
   useEffect(() => {
-    setSlides(data);
+    fetchData()
+//     setSlides(data);
   }, []);
 
   const handlePrev = (): void => {
